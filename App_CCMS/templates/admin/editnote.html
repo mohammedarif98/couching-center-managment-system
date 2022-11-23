@@ -1,0 +1,35 @@
+{% extends 'admin/adminhome.html' %}
+
+    {% block content %}
+    {% load static %}
+
+    <div class="container">
+        <h3 class="alert alert-dark text-center mb-5 w-50">
+            Edit Note 
+        </h3>
+            <form method="post" action="{% url 'Edit_Note' editnotes.id %}" enctype="multipart/form-data">
+                {% csrf_token %} 
+                <input type="text" name="discription"  rows="6" cols="25" value="{{ editnotes.Course_Discription }}" class="form-control mt-3" placeholder="Edit Note" style="width: 650px;">
+                {% if products.image %}
+                    <img src="{{ editnotes.Bg_Image.url }}" alt="" class="">
+                {% endif %}
+                <input type="file" name="bgimage" class="form-control mt-3" accept="image/" placeholder="Photo" style="width: 650px;">
+                <input type="file" name="pdfnote" class="form-control mt-3" placeholder="Add pdf Note" accept="pdf/" style="width: 650px;"><br>
+                <button type="submit" class="btn btn-success mt-3 " style="width: 650px;">Submit</button>
+            </form>
+    </div>
+       
+    <style>
+    .container{
+        position: absolute;
+        left: 30%;
+        top: 27%;
+    }
+    input[type=text],[type=number],[type=file]{
+        width: 650px;
+    }
+    #search{
+        width: 300px;
+    }
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'admin/adminhome.html' %}
+
+{% block content %}
+{% load static %}
+
+
+
+<form action="{% url 'edit_User_status' user.id  %}" method="post">
+    {% csrf_token %}
+    <!-- <label for="" name="">permission</label>
+    <select name="status" id="">
+        <option value="approve">approve</option>
+        <option value="reject">reject</option>
+    </select> -->
+    <div class="container">
+    <div class="form-group">
+        <select name="status" id="" class="regform" style="width: 330px;height: 40px;">
+            <option value="" disabled selected>permission</option>
+            <option value="approve">approve</option>
+            <option value="reject">reject</option>
+        </select>
+    </div><br>
+
+    <button class="btn btn-success" type="submit" style="width: 330px;height: 40px;">submit</button>
+    </div>
+</form>
+
+<style>
+    .container{
+    position: absolute;
+    top: 45%;
+    left: 40%;
+}
+
+</style>
+{% endblock %}

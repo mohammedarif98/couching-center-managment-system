@@ -1,0 +1,514 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/user/style.css' %}">
+</head>
+<body>
+            
+      <nav class="navbar navbar-expand-sm navbar-dark fixed-top py-md-3">
+        <div class="container">
+          <a class="navbar-brand" href="" style="color: rgb(114, 27, 27);">T A L E N T </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          {% if user.is_authenticated %}
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav mx-auto py-2">
+              <li class="nav-item px-2">
+                <a class="nav-link" href="">HOME</a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link" href="{% url 'Display_Course' %}">COURSES</a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link" href="">ABOUT</a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link" href="#cntct">CONTACT</a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link" href="{% url 'Personal_Note' %}">NOTES</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+            <ul class="navbar-nav ">
+              <li class="nav-item">
+                <!-- <a class="nav-link" href=""><i class="bi bi-person-circle" id="loginicon"></i></a> -->
+                <li class="dropdown">
+                  <a href="#" class="" data-toggle="dropdown" style="font-size: 15px;"><b class="caret">{{request.user}}</b></a>
+                  <ul class="dropdown-menu">
+                    <li class=""><a class="" href="{% url 'User_Logout' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Logout </a></li>
+                    <li><a href="{% url 'Profile' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Profile</a></li>
+                    <li><a href="{% url 'Edit_Page' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile </a></li>
+                  </ul>
+                </li>
+              </li>
+            </ul>
+            </form>
+          </div>
+        </div>
+      </nav>
+     
+      <!-- ====== navbar end======== -->
+
+      <div class="header">
+        <img src="{% static 'images/emile-perron-xrVDYZRGdw4-unsplash (1).jpg' %}" alt="">
+      </div>
+
+      <!-- ----- course card ----- -->
+ 
+      <div class="container-fluid my-5" id="cors">
+        <h2 class="text-dark">Our Courses</h2>
+        <div class="row">
+
+          <div class="col col-lg-4 col-md-4">
+            <div class="card mb-3 shadow-lg" style="max-width: 640px;">
+              <div class="row no-gutters">
+                <div class="col-md-6">
+                  <img src="{% static 'images/download.jpg' %}" class="card-img" alt="..." width="100%" height="100%">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title">ARTIFICIAL INTELLIGENCE</h5>
+                    <p class="card-text">Artificial intelligence (AI) is a wide-ranging branch of computer science concerned smart machines capable of performing that typically require human intelligence.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col col-lg-4 col-md-4">
+            <div class="card mb-3 shadow-lg" style="max-width: 640px;">
+              <div class="row no-gutters">
+                <div class="col-md-6">
+                  <img src="{% static 'images/5a-1.webp' %}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title">MECHINE LEARNING</h5>
+                    <p class="card-text">Machine learning (ML) is a type of (AI) that allows software applications to become more accurate at predicting outcomes without being explicitly programme.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col col-lg-4 col-md-4">
+            <div class="card mb-3 shadow-lg" style="max-width: 640px;">
+              <div class="row no-gutters">
+                <div class="col-md-6">
+                  <img src="{% static 'images/259-2597329_coding-background-python-wallpaper.jpg' %}" class="card-img" alt="..." width="100%" height="100%">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title">PYTHON FULLSTACK</h5>
+                    <p class="card-text">Django is a free and open-source, Python-based web framework that follows the model–template–views architectural pattern. It is maintained by the Django Software Foundation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- end course card -->
+
+      <!-- instuctor -->
+
+      <div class="container my-5" style="max-width: 1500px;">
+        <h2 class="text-dark">Our Instructor</h2>
+        <div class="row">
+
+          <div class="col-6 col-md-4 col-lg-3 ">
+            <div class="card" style="width: 350px;">
+              <img src="{% static 'images/channels4_profile.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body py-3">
+                <p class="card-text text-center"> Mosh Hamedani</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3 ">
+            <div class="card" style="width: 350px;">
+              <img src="{% static 'images/hn0RGkNM_400x400.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body py-3">
+                <p class="card-text text-center">Quincy Larson</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3 ">
+            <div class="card" style="width: 350px;">
+              <img src="{% static 'images/WjEVqsDh_400x400.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body py-3">
+                <p class="card-text text-center">Henry</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3  ">
+            <div class="card" style="width: 350px;">
+              <img src="{% static 'images/qwrettrfdtytytytyy.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body py-3">
+                <p class="card-text text-center">Nikhil Kilivayil</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ====testimonial==== -->
+
+      <div class="container-fluid" id="test-bg"  style="background-image: url('static/images/mario-gogh-VBLHICVh-lI-unsplash.jpg');">
+        <div class="row">
+          <div class="col-md-8 col-center m-auto">
+            <h2>Testimonials</h2>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Carousel -->
+              <div class="carousel-inner">
+                <div class="item carousel-item active">
+                  <div class="img-box"><img src="https://i.ibb.co/d5DY64w/img1.jpg" alt=""></div>
+                  <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+                  <p class="overview"><b>Jennifer Smith</b>, Office Worker</p>
+                </div>
+                <div class="item carousel-item">
+                  <div class="img-box"><img src="https://i.ibb.co/5FF1vqz/img2.jpg" alt=""></div>
+                  <p class="testimonial">Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Utmtc tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
+                  <p class="overview"><b>Dauglas McNun</b>, Senior Developer</p>
+                </div>
+                <div class="item carousel-item">
+                  <div class="img-box"><img src="https://i.ibb.co/Trv7hDv/img3.jpg" alt=""></div>
+                  <p class="testimonial">Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id lacinia. Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan tincidunt. Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa. Etiam hendrerit dolor eget rutrum.</p>
+                  <p class="overview"><b>Hellen Wright</b>, Client</p>
+                </div>
+              </div>
+              <!-- Carousel Controls -->
+              <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+              </a>
+              <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end  testimoniAL -->
+
+
+      <!-- ======footer====== -->
+      <div class="footer">
+        <div class="container" id="cntct">     
+            <div class="row">                       
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                    <div class="single_footer">
+                        <h4>Services</h4>
+                        <ul>
+                          <li><a href="#">Mobile Development</a></li>
+                          <li><a href="#">Software Traning</a></li>
+                          <li><a href="#">Web Development</a></li>
+                          <li><a href="#">Interships </a></li>
+                          <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                </div><!--- END COL --> 
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="single_footer single_footer_address">
+                        <h4>Page Link</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Help</a></li>
+                            <!-- <li><a href="#">Hosting</a></li>
+                            <li><a href="#">Mobile Development</a></li> -->
+                        </ul>
+                    </div>
+                </div><!--- END COL -->
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="single_footer single_footer_address">
+                        <h4>Contact Us</h4>
+                        <div class="signup_form">                           
+                            <form action="#" class="subscribe">
+                                <input type="text" class="subscribe__input" placeholder="Enter Email Address">
+                                <button type="button" class="subscribe__btn"><i class="bi bi-send-fill"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="social_profile">
+                        <ul>
+                            <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                            <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+                            <li><a href="#"><i class="bi bi-google"></i></a></li>
+                            <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                        </ul>
+                    </div>                          
+                </div><!--- END COL -->         
+            </div><!--- END ROW -->              
+        </div><!--- END CONTAINER -->
+          {% else %}
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav mx-auto py-2">
+              <li class="nav-item px-2">
+                <a class="nav-link" href="">HOME</a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link" href="{% url 'Display_Course' %}">COURSES</a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link" href="">ABOUT</a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link" href="#cntct">CONTACT</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+            <ul class="navbar-nav ">
+              <li class="nav-item">
+                <!-- <a class="nav-link" href=""><i class="bi bi-person-circle" id="loginicon"></i></a> -->
+                <li class="dropdown">
+                  <a href="#" class="" data-toggle="dropdown"><i class="bi bi-person-circle" id="loginicon"></i><b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li class=""><a class="" href="{% url 'SignIn_Page' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Login </a></li>
+                    <!-- <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Another action</a></li> -->
+                    <!-- <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Something else </a></li> -->
+                  </ul>
+                </li>
+              </li>
+            </ul>
+              <!-- <input class="form-control me-2" type="text" placeholder="Search"> -->
+              <!-- <button class="btn btn-primary" type="button">Search</button> -->
+            </form>
+          </div>
+        </div>
+      </nav>
+      <!-- ====== navbar end======== -->
+
+      <div class="header">
+        <img src="{% static 'images/emile-perron-xrVDYZRGdw4-unsplash (1).jpg' %}" alt="">
+      </div>
+
+      <!-- ----- course card ----- -->
+ 
+      <div class="container-fluid my-5" id="cors">
+        <h2 class="text-dark">Our Courses</h2>
+        <div class="row">
+
+          <div class="col col-md-4 col-lg-4 ">
+            <div class="card mb-3 shadow-lg" style="max-width: 640px;">
+              <div class="row no-gutters">
+                <div class="col-md-6">
+                  <img src="{% static 'images/download.jpg' %}" class="card-img" alt="..." width="100%" height="100%">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title">ARTIFICIAL INTELLIGENCE</h5>
+                    <p class="card-text">Artificial intelligence (AI) is a wide-ranging branch of computer science concerned smart machines capable of performing that typically require human intelligence.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col col-md-4 col-lg-4 ">
+            <div class="card mb-3 shadow-lg" style="max-width: 640px;">
+              <div class="row no-gutters">
+                <div class="col-md-6">
+                  <img src="{% static 'images/5a-1.webp' %}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title">MECHINE LEARNING</h5>
+                    <p class="card-text">Machine learning (ML) is a type of (AI) that allows software applications to become more accurate at predicting outcomes without being explicitly programme.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col col-md-4 col-lg-4 ">
+            <div class="card mb-3 shadow-lg" style="max-width: 640px;">
+              <div class="row no-gutters">
+                <div class="col-md-6">
+                  <img src="{% static 'images/259-2597329_coding-background-python-wallpaper.jpg' %}" class="card-img" alt="..." width="100%" height="100%">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title">PYTHON FULLSTACK</h5>
+                    <p class="card-text">Django is a free and open-source, Python-based web framework that follows the model–template–views architectural pattern. It is maintained by the Django Software Foundation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- end course card -->
+
+      <!-- instuctor -->
+
+      <div class="container my-5" style="max-width: 1500px;">
+        <h2 class="text-dark">Our Instructor</h2>
+        <div class="row">
+
+          <div class="col-6 col-md-4 col-lg-3 ">
+            <div class="card" style="width: 350px;">
+              <img src="{% static 'images/channels4_profile.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body py-3">
+                <p class="card-text text-center"> Mosh Hamedani</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3 ">
+            <div class="card" style="width: 350px;">
+              <img src="{% static 'images/hn0RGkNM_400x400.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body py-3">
+                <p class="card-text text-center">Quincy Larson</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3 ">
+            <div class="card" style="width: 350px;">
+              <img src="{% static 'images/WjEVqsDh_400x400.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body py-3">
+                <p class="card-text text-center">Henry</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3  ">
+            <div class="card" style="width: 350px;">
+              <img src="{% static 'images/qwrettrfdtytytytyy.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body py-3">
+                <p class="card-text text-center">Nikhil Kilivayil</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ====testimonial==== -->
+
+      <div class="container-fluid" id="test-bg"  style="background-image: url('static/images/mario-gogh-VBLHICVh-lI-unsplash.jpg');">
+        <div class="row">
+          <div class="col-md-8 col-center m-auto">
+            <h2>Testimonials</h2>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Carousel -->
+              <div class="carousel-inner">
+                <div class="item carousel-item active">
+                  <div class="img-box"><img src="https://i.ibb.co/d5DY64w/img1.jpg" alt=""></div>
+                  <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+                  <p class="overview"><b>Jennifer Smith</b>, Office Worker</p>
+                </div>
+                <div class="item carousel-item">
+                  <div class="img-box"><img src="https://i.ibb.co/5FF1vqz/img2.jpg" alt=""></div>
+                  <p class="testimonial">Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Utmtc tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
+                  <p class="overview"><b>Dauglas McNun</b>, Senior Developer</p>
+                </div>
+                <div class="item carousel-item">
+                  <div class="img-box"><img src="https://i.ibb.co/Trv7hDv/img3.jpg" alt=""></div>
+                  <p class="testimonial">Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id lacinia. Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan tincidunt. Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa. Etiam hendrerit dolor eget rutrum.</p>
+                  <p class="overview"><b>Hellen Wright</b>, Client</p>
+                </div>
+              </div>
+              <!-- Carousel Controls -->
+              <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+              </a>
+              <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end  testimoniAL -->
+
+
+      <!-- ======footer====== -->
+      <div class="footer">
+        <div class="container" id="cntct">     
+            <div class="row">                       
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                    <div class="single_footer">
+                        <h4>Services</h4>
+                        <ul>
+                          <li><a href="#">Mobile Development</a></li>
+                          <li><a href="#">Software Traning</a></li>
+                          <li><a href="#">Web Development</a></li>
+                          <li><a href="#">Interships </a></li>
+                          <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                </div><!--- END COL --> 
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="single_footer single_footer_address">
+                        <h4>Page Link</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Help</a></li>
+                            <!-- <li><a href="#">Hosting</a></li>
+                            <li><a href="#">Mobile Development</a></li> -->
+                        </ul>
+                    </div>
+                </div><!--- END COL -->
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="single_footer single_footer_address">
+                        <h4>Contact Us</h4>
+                        <div class="signup_form">                           
+                            <form action="#" class="subscribe">
+                                <input type="text" class="subscribe__input" placeholder="Enter Email Address">
+                                <button type="button" class="subscribe__btn"><i class="bi bi-send-fill"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="social_profile">
+                        <ul>
+                            <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                            <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+                            <li><a href="#"><i class="bi bi-google"></i></a></li>
+                            <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                        </ul>
+                    </div>                          
+                </div><!--- END COL -->         
+            </div><!--- END ROW -->              
+        </div><!--- END CONTAINER -->
+
+        {% endif %}
+
+    <script>
+      var nav = document.querySelector('nav');
+
+    window.addEventListener('scroll', function () {
+        if (window.pageYOffset > 100) {
+            nav.classList.add( 'shadow');
+        }
+        else {
+            nav.classList.remove( 'shadow');
+        }
+    });
+
+    </script>
+</body>
+</html>
+
+

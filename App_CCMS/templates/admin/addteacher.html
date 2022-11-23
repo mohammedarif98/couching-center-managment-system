@@ -1,0 +1,44 @@
+{% extends 'admin/adminhome.html' %}
+
+    {% block content %}
+    {% load static %}
+    <div class="container">
+        <h3 class="alert alert-dark text-center mb-5 w-50">
+            Add Teacher 
+        </h3>
+    <form action="{% url 'Add_Teacher' %}" method="post" enctype="">
+        {% csrf_token %}
+        <input type="text" name="teachername" placeholder="Enter Name" class="form-control mt-3">
+        <input type="text" name="teachergender" placeholder="Enter Gender" class="form-control mt-3"><br>
+        <select name="coursename" id="" class="regform" style="width:650px;height:45px;">
+            <option value="" disabled selected>Courses</option>
+            {% for i in course %}
+            <option value="{{ i.id }}">{{ i.Course_Name }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit" class="btn btn-success mt-3 " style="width: 650px;">Submit</button>
+
+    </form>
+    </div>
+
+    <style>
+        .container{
+            position: absolute;
+            left: 30%;
+            top: 27%;
+            
+        }
+        input[type=text],[type=number],[type=file]{
+            width: 650px;
+        }
+        #search{
+            width: 300px;
+        }
+        /* .btn{
+            width: 600px;
+        } */
+        
+    </style>
+
+
+    {% endblock %}

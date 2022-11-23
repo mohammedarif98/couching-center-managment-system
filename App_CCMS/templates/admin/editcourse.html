@@ -1,0 +1,38 @@
+{% extends 'admin/adminhome.html' %}
+
+{% block content %}
+{% load static %} 
+
+<div class="container">
+    <h3 class="alert alert-dark text-center mb-5 w-50">
+        Edit Course 
+    </h3>
+        <form method="post" action="{% url 'Course_Edit' editcrs.id %}" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <input type="text" name="cname" value="{{ editcrs.Course_Name }}" class="form-control mt-3" placeholder="course name">
+            <input type="text" name="cfee" value="{{ editcrs.Course_Fee }}" class="form-control mt-3" placeholder="course fee">
+            <input type="text" name="cabout" value="{{ editcrs.About_Course }}" class="form-control mt-3" placeholder="about course">
+            <input type="text" name="duration" value="{{ editcrs.Duration }}" class="form-control mt-3" placeholder="course duration">
+
+            {% if editcrs.image %}
+                <img src="{{ editcrs.BG_Image.url }}" alt="" class="">
+            {% endif %}
+            <input type="file" name="bgimage" class="form-control mt-3" accept="image/" placeholder="Photo" style="width: 650px;">
+            <button type="submit" class="btn btn-success mt-3 " style="width: 650px;">Submit</button>
+        </form>
+</div>
+   
+<style>
+.container{
+    position: absolute;
+    left: 30%;
+    top: 27%;
+}
+input[type=text],[type=number],[type=file]{
+    width: 650px;
+}
+#search{
+    width: 300px;
+}
+
+{% endblock %}

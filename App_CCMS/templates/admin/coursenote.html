@@ -1,0 +1,45 @@
+{% extends 'admin/adminhome.html' %}
+
+{% block content %}
+{% load static %}
+
+<h3 class="heading  mt-2">Add Course Note Details</h3>
+<div class="container border border-dark py-5">
+    <center>
+    
+        <form method="post" action="{% url 'Add_Course_Note' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <textarea name="discription" rows="6" cols="25" class="form-control mt-3" placeholder=" Course Note" style="width: 650px;"></textarea>
+            <input type="file" name="bgimage" class="form-control mt-3" accept="image/" placeholder="Photo" style="width: 650px;">
+            <input type="file" name="pdfnote" class="form-control mt-3" placeholder="Add pdf Note" accept="pdf/" style="width: 650px;"><br>
+
+            <select class="form-control" name="select" id="qwerty" style="width: 650px;">
+                {% for i in cdata %}
+                <option value="{{ i.id }}">{{ i.Course_Name }}</option>
+                {% endfor %}
+            </select><br>
+            
+            <button type="submit" class="btn btn-success mt-3 " style="width: 650px; background-color: green;">Submit</button>
+        </form></center>
+</div>  
+
+
+<style>
+    .container{
+        position: absolute;
+        top: 23%;
+        left: 27%;
+        width: 45%;
+    }
+    .heading{
+        position: absolute;
+        top: 17.7%;
+        left: 40%;
+        background-color: rgb(52, 129, 22);
+        padding: 5px 5px;
+        color: aliceblue;
+    }
+</style>
+
+
+{% endblock %}

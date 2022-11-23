@@ -1,0 +1,39 @@
+{% extends 'admin/adminhome.html' %}
+
+{% block content %}
+    {% load static %}            
+
+<div class="container">
+    <h3 class="alert alert-dark text-center mb-5 w-50">
+        Add Course 
+    </h3>
+        <form method="post" action="{% url 'Add_Course' %}" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <input type="text" name="coursename" class="form-control mt-3" placeholder="Enter Course Name">
+            <input type="text" name="coursefee" class="form-control mt-3 mb-3" placeholder="Enter fee">
+            <input type="text" name="courseabout" class="form-control mt-3" placeholder="Enter Detail" > 
+            <input type="text" name="courseduration" class="form-control mt-3" placeholder="Enter Duration" ><br>
+            <input type="file" name="bgimage" id="" accept="image/" placeholder="Photo" required><br><br>
+            <button type="submit" class="btn btn-success mt-3 " style="width: 650px;">Submit</button>
+        </form>
+</div>
+   
+<style>
+.container{
+    position: absolute;
+    left: 30%;
+    top: 27%;
+}
+input[type=text]{
+    width: 650px;
+}
+#search{
+    width: 300px;
+}
+/* .btn{
+    width: 600px;
+} */
+
+</style>
+    
+{% endblock %}
